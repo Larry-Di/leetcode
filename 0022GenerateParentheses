@@ -1,0 +1,21 @@
+public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<String>();
+        if(n==0){
+            list.add("");
+            return list;
+        } 
+        if(n==1){
+            list.add("()");
+            return list;
+        } 
+        
+        for(int i=0; i<n; i++){
+            for(int j=0;j<generateParenthesis(i).size();j++){
+                for(int k=0; k<generateParenthesis(n-i-1).size(); k++){
+                     list.add( "(" + generateParenthesis(i).get(j) + ")" + generateParenthesis(n-i-1).get(k));
+                }
+            }   
+        }
+        
+        return list;        
+    }
