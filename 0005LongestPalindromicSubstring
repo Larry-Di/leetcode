@@ -1,0 +1,14 @@
+private int start=0;
+    private int end=0;
+    
+    public String longestPalindrome(String s) {
+        if(s.length()==0 || s.length()==1) return s;
+        String res="";
+        for(int i=0;i<s.length()-1;i++){
+            func(s,i,i);
+            func(s,i,i+1);
+        }
+        
+        res = s.substring(this.start, this.end);
+        return res;
+    }
