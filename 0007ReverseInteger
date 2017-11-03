@@ -1,0 +1,16 @@
+public int reverse(int x) {
+        if(x==Integer.MIN_VALUE||x==0) return 0;
+        int signx = x>0?1:0;         
+        x = Math.abs(x);
+        String s = Integer.toString(x);
+        s = new StringBuffer(s).reverse().toString();
+        long l = Long.parseLong(s);
+        if(l>Integer.MAX_VALUE) return 0;
+        if(signx==1){
+            return (int)l;
+        }else{
+            return 0-(int)l;
+        }
+        
+        
+    }
