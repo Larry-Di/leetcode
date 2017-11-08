@@ -1,0 +1,37 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        if(nums.length==0) return new int[]{-1,-1}; 
+        int[] res = new int[2];
+        int k = this.findTarget(nums, target);
+        if(k==-1) return new int[]{-1,-1};
+        int j = k;        
+        while(j-1>=0){
+            if(nums[j-1]==target){
+                j--;
+            }else break;
+        }
+        res[0]=j;
+        while(k+1<nums.length){
+            if(nums[k+1]==target){
+                k++;
+            }else break;
+        }
+        res[1]=k;        
+        return res;        
+    }
+    
+    private int findTarget(int[] nums, int target){
+        int i=0; int j=nums.length-1;
+        if(nums[i]==target) return i;
+        while(i<j){
+            if(nums[i]==target) return i;
+            if(nums[j]==target) return j;
+            int mid = (i+j)/2;
+            if(nums[mid]==target) return mid;
+            if(nums[mid]>target){
+                j=mid-1;
+            }else{ i=mid+1;}
+        }        
+        return -1;
+    }   
+}
